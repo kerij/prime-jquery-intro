@@ -27,11 +27,22 @@ $(document).ready(function() {
 
       //show the monhtly total on the webpage
       $("#total").text("Monthly Total: $" + monthlyCompanyTotal);
+
+      //highlight a <p> when clicked - only works on every other entry????
+      // $(".employee").on("click", function() {
+      //   $(this).toggleClass("highlight");
+      // });
+
+
     });
 
 
 var employeeArray =[];
-var monthlyCompanyTotal = 0
+var monthlyCompanyTotal = 0;
+// function changeBackgroundColor(){
+//   $(this).toggleClass("highlight");
+//   }
+
 
     function appendDom(empInfo) {
       var monthlySalary = 0
@@ -46,22 +57,21 @@ var monthlyCompanyTotal = 0
       console.log(employeeArray);
 
       //calculate monthlySalary and save in a variable
-      //console.log(employeeArray[employeeArray.length - 1]["employeesalary"]);
       monthlySalary = parseFloat(employeeArray[employeeArray.length - 1]["employeesalary"])/12;
       monthlySalary = parseFloat(monthlySalary.toFixed(2));
-      //console.log(monthlySalary);
+
 
       //put monthlySalary in the object
       employeeArray[employeeArray.length - 1].monthlySalary = monthlySalary;
 
       //add new monthlySalary to the running total
-      monthlyCompanyTotal += ParseFloat(monthlySalary.toFixed(2));
+      monthlyCompanyTotal += parseFloat(monthlySalary.toFixed(2));
 
       //Drews crazyness
       // employeeArray[employeeArray.length] = empInfo;
       // console.log(employeeArray);
       //----------------
-      $el.append('<p>Employee Entry: ' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + ' ' + empInfo.employeejobtitle + ' ' + empInfo.employeesalary + ' ' + empInfo.monthlySalary + '</p>');
+      $el.append('<p class="employee">Employee Entry: ' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + ' ' + empInfo.employeejobtitle + ' ' + empInfo.employeesalary + ' ' + empInfo.monthlySalary + '</p>');
     }
 
 
