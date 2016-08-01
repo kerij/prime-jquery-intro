@@ -15,6 +15,9 @@
       <label for="employeelastname">Employee Last Name:</label>
       <input type="text" id="employeelastname" name="employeelastname" />
 
+      <label for="employeenumber">Employee Number:</label>
+      <input type="text" id="employeenumber" name="employeenumber" />
+
       <label for="employeejobtitle">Employee Job Title:</label>
       <input type="text" id="employeejobtitle" name="employeejobtitle" />
 
@@ -25,10 +28,20 @@
     </form>
   </div>
   <div id="container">
-    <h2>Employees</h2>
+    <table id="employeetable" align="center">
+      <tr>
+        <th>Employee Name</th>
+        <th>Employee Number</th>
+        <th>Employee Title</th>
+        <th>Employee Salary</th>
+        <th>Employee Monthly Salary</th>
+      </tr>
+    </table>
   </div>
   <div id="total">
-    <h2></h2>
+  </div>
+  <div>
+    <button id="delete">Delete highlighted entries</button>
   </div>
 </body>
 </html>

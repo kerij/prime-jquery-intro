@@ -28,11 +28,15 @@ $(document).ready(function() {
       //show the monhtly total on the webpage
       $("#total").text("Monthly Total: $" + monthlyCompanyTotal);
 
-      //highlight a <p> when clicked - only works on every other entry????
-      // $(".employee").on("click", function() {
-      //   $(this).toggleClass("highlight");
-      // });
+      //highlight a <p> when clicked - only works on every other entry with toggleClass????
+      $(".employee").on("click",function() {
+        $(this).addClass("highlight");
+      });
 
+      //delete button
+      $("#delete").on("click", function(){
+        $(".highlight").remove();
+      });
 
     });
 
@@ -47,8 +51,8 @@ var monthlyCompanyTotal = 0;
     function appendDom(empInfo) {
       var monthlySalary = 0
 
-      $('#container').append('<div class="person"></div>');
-      var $el = $('#container').children().last();
+      $('#employeetable').append('<div class="person"></div>');
+      var $el = $('#employeetable').last();
 
 
 
@@ -71,7 +75,7 @@ var monthlyCompanyTotal = 0;
       // employeeArray[employeeArray.length] = empInfo;
       // console.log(employeeArray);
       //----------------
-      $el.append('<p class="employee">Employee Entry: ' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + ' ' + empInfo.employeejobtitle + ' ' + empInfo.employeesalary + ' ' + empInfo.monthlySalary + '</p>');
+      $el.append('<tr class="employee"><td>' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + '</td><td>' + empInfo.employeenumber + '</td><td>' +empInfo.employeejobtitle + '</td><td>' + empInfo.employeesalary + '</td><td>' + empInfo.monthlySalary + '</td></tr>');
     }
 
 
