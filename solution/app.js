@@ -29,13 +29,22 @@ $(document).ready(function() {
       $("#total").text("Monthly Total: $" + monthlyCompanyTotal);
 
       //highlight a <p> when clicked - only works on every other entry with toggleClass????
-      $(".employee").on("click",function() {
-        $(this).addClass("highlight");
-      });
+      // $(".employee").on("click",function() {
+      //   $(this).addClass("highlight");
+      // });
 
-      //delete button
-      $("#delete").on("click", function(){
-        $(".highlight").remove();
+      //delete button (form)
+      // $("#delete").on("click", function(){
+      //   $(".highlight").remove();
+      // });
+
+      //delete botton (row)
+      $(".delete").on("click", function(){
+        $(this).parent().parent().remove();
+        console.log(this);
+        console.log($(this).data("testing"));
+        monthlyCompanyTotal -= $(this).data("testing");
+        $("#total").text("Monthly Total: $" + monthlyCompanyTotal);
       });
 
     });
@@ -43,9 +52,7 @@ $(document).ready(function() {
 
 var employeeArray =[];
 var monthlyCompanyTotal = 0;
-// function changeBackgroundColor(){
-//   $(this).toggleClass("highlight");
-//   }
+
 
 
     function appendDom(empInfo) {
@@ -75,7 +82,7 @@ var monthlyCompanyTotal = 0;
       // employeeArray[employeeArray.length] = empInfo;
       // console.log(employeeArray);
       //----------------
-      $el.append('<tr class="employee"><td>' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + '</td><td>' + empInfo.employeenumber + '</td><td>' +empInfo.employeejobtitle + '</td><td>' + empInfo.employeesalary + '</td><td>' + empInfo.monthlySalary + '</td></tr>');
+      $el.append('<tr class="employee"><td>' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + '</td><td>' + empInfo.employeenumber + '</td><td>' +empInfo.employeejobtitle + '</td><td>' + empInfo.employeesalary + '</td><td>' + empInfo.monthlySalary + '</td><td><button class="delete" data-testing="' + empInfo.monthlySalary + '">Delete</button></td></tr>');
     }
 
 
