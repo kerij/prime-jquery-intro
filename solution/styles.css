@@ -12,3 +12,6 @@ h2 {
 tr {
   text-align: center;
 }
+.person {
+  border-bottom: 1px solid grey;
+}

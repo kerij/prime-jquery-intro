@@ -21,12 +21,13 @@ $(document).ready(function() {
 
       // clear out inputs
       $('#employeeinfo').find('input[type=text]').val('');
+      $("empfirstname").focus();
 
       // append to DOM
       appendDom(values);
 
       //show the monhtly total on the webpage
-      $("#total").text("Monthly Total: $" + monthlyCompanyTotal);
+      $("#total").text(monthlyCompanyTotal);
 
       //highlight a <p> when clicked - only works on every other entry with toggleClass????
       // $(".employee").on("click",function() {
@@ -37,18 +38,19 @@ $(document).ready(function() {
       // $("#delete").on("click", function(){
       //   $(".highlight").remove();
       // });
-
       //delete botton (row)
-      $(".delete").on("click", function(){
-        $(this).parent().parent().remove();
+      $(".person").on("click", ".delete", function(){
         console.log(this);
         console.log($(this).data("testing"));
         monthlyCompanyTotal -= $(this).data("testing");
-        $("#total").text("Monthly Total: $" + monthlyCompanyTotal);
+        $(this).parent().remove();
+        $("#total").text(monthlyCompanyTotal);
       });
 
     });
 
+
+});
 
 var employeeArray =[];
 var monthlyCompanyTotal = 0;
@@ -58,8 +60,8 @@ var monthlyCompanyTotal = 0;
     function appendDom(empInfo) {
       var monthlySalary = 0
 
-      $('#employeetable').append('<div class="person"></div>');
-      var $el = $('#employeetable').last();
+      $('#container').append('<div class="person"></div>');
+      var $el = $('#container').children().last();
 
 
 
@@ -82,8 +84,10 @@ var monthlyCompanyTotal = 0;
       // employeeArray[employeeArray.length] = empInfo;
       // console.log(employeeArray);
       //----------------
-      $el.append('<tr class="employee"><td>' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + '</td><td>' + empInfo.employeenumber + '</td><td>' +empInfo.employeejobtitle + '</td><td>' + empInfo.employeesalary + '</td><td>' + empInfo.monthlySalary + '</td><td><button class="delete" data-testing="' + empInfo.monthlySalary + '">Delete</button></td></tr>');
+      $el.append('<p class="employee">' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + '</p>')
+      $el.append('<p>' + empInfo.employeenumber + '</p>')
+      $el.append('<p>' + empInfo.employeejobtitle + '<p>')
+      $el.append('<p>' + empInfo.employeesalary + '</p>')
+      $el.append('<p>' + empInfo.monthlySalary + '</p>')
+      $el.append('<button class="delete" data-testing="' + empInfo.monthlySalary + '">Delete</button>');
     }
-
-
-});
