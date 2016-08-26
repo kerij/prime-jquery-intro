@@ -10,6 +10,7 @@ myApp.controller("taskController", ["$scope", function($scope) {
     onePerson.monthlySalary = onePerson.salary/12;
     $scope.salaryTotal.total += onePerson.monthlySalary;
     $scope.employees.push(onePerson);
+    $scope.employee = {};
   }
 
   $scope.removeEmployee = function (index) {
